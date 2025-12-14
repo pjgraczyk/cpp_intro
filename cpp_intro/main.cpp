@@ -1,14 +1,18 @@
-//
-//  main.cpp
-//  cpp_intro
-//
-//  Created by Przemysław Graczyk on 14/12/2025.
-//
+#include "guessing_game.h"
 
-#include <iostream>
+int main() {
+    int random_number = get_random_number();
+    int guessed_number;
+    do {
+        prompt_for_number();
+        guessed_number = get_number_from_stdin();
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return EXIT_SUCCESS;
+        if (guessed_number > random_number) {
+            print_too_high_guess();
+        } else if (guessed_number < random_number) {
+            print_too_low_guess();
+        }
+    } while (guessed_number != random_number);
+    print_good_guess();
+    return 0;
 }
